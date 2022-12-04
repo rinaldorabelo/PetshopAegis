@@ -1,0 +1,34 @@
+public class Mamifero extends Animal {// *-- Criação da classe -- *//
+
+    // *-- Criação dos atributos da classe --* //
+    private String corPelo;
+    private String alimento;
+
+    // *-- Criação do construtor da classe -- * //
+    public Mamifero(String nome, String raca, double idade, double peso, double altura) {
+        super(nome, raca, idade, peso, altura);
+        setNome(nome);
+        
+        setIdade(idade);
+        
+        setAltura(altura);
+    }
+
+    // *-- Criação dos métodos getters e setters --* //
+    public String getCorPelo() {
+        return corPelo;
+    }
+
+    public void setCorPelo(String corPelo) {
+        this.corPelo = corPelo;
+    }
+
+    public String getAlimento() {
+        return alimento;
+    }
+
+    public void setAlimento(String alimento) {
+        this.alimento = alimento;
+    }
+
+}
