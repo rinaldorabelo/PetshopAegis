@@ -14,7 +14,7 @@ public abstract class Animal { // *-- Criação da classe -- *//
     }
 
     // *-- Criação dos métodos getters e setters --* //
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 

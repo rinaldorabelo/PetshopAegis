@@ -213,7 +213,7 @@ public class Menus extends Principal {
             try {
                 escolhaExibir = scannerMenus.nextInt();
                 scannerMenus.nextLine();
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException e){
                 scannerMenus.next();
                 System.out.println();
             } catch (Exception e) {

@@ -15,7 +15,7 @@ public class Gato extends Mamifero {
     // *-- Criação do método que ira conter todos os dados do Objeto, utilizando os métodos get -- * //
 
     //*-- Gets e sets --*//
-    public String getPelagem() {
+    public String getPelagem(){
         return pelagem;
     }
 

@@ -201,7 +201,7 @@ public class GatoHandler {
         }
     }
 
-    public void buscarRacaGato() {
+    public void buscarRacaGato(){
         boolean isInput = true;
         String raca = "teste";
         while (isInput) {

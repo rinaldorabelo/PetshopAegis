@@ -255,7 +255,7 @@ public class PassaroHandler {
         }
         String corpenaCorrigido = p.formatador(corpena);
         boolean localizado = false;
-        for (Passaro passaro : Principal.passaroArray) {
+        for (Passaro passaro : Principal.passaroArray){
             if (corpenaCorrigido.contains(passaro.getCorPenas())) {
                 passaro.exibirDados();
                 System.out.println();

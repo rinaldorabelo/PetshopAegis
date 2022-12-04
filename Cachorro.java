@@ -13,7 +13,7 @@ public class Cachorro extends Mamifero {// *-- Criação da classe -- *//
 
 
     // *-- Criação do método que ira conter todos os dados do Objeto, utilizando os métodos get -- * //
-    public void exibirDados() {
+    public void exibirDados(){
         System.out.format("Nome: " + getNome() + "\tRaça: " + getRaca() + "\tPeso: " + getPeso() + "kg" + "\tIdade: "+ getIdade() + " ano(s) "+  "\tAltura: " + getAltura() + " metro(s)");
     }
 

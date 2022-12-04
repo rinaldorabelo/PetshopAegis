@@ -60,7 +60,7 @@ public class Principal {
             System.out.println();
         }
         System.out.println();
-        for (Gato gato : gatoArray) {
+        for (Gato gato : gatoArray){
             gato.exibirDados();
             System.out.println();
         }

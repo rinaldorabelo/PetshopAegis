@@ -11,7 +11,6 @@ public class Oviparo extends Animal{
         setAltura(altura);
         setTipo(tipo);
     }
-    
 
     //*-- Gets e sets --*//
     public String getTipo(){

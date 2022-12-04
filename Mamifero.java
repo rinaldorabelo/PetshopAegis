@@ -15,7 +15,7 @@ public class Mamifero extends Animal {// *-- Criação da classe -- *//
     }
 
     // *-- Criação dos métodos getters e setters --* //
-    public String getCorPelo() {
+    public String getCorPelo(){
         return corPelo;
     }
 

@@ -18,7 +18,7 @@ public class CachorroHandler {
         System.out.println("Cachorro cadastrado com sucesso!!");
     }
 
-    public void editarCachorro() {
+    public void editarCachorro(){
         // *-- Função responsável por editar um registro no sistema. Depois de encontrar
         // o registro
         // ela entra em loop e permanece até o usuário sair. Usa switch case para

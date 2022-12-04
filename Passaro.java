@@ -42,7 +42,7 @@ public class Passaro extends Oviparo{
             this.corPenas = corPenas;
         }
 
-        public void setEspecie(String especie) {
+        public void setEspecie(String especie){
             this.especie = especie;
         }
 
