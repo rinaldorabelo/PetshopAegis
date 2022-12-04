@@ -155,7 +155,7 @@ public class Menus extends Principal {
             System.out.println("|                                           |");
             System.out.println("|[9] Retornar ao Menu Anterior              |");
             System.out.println("|-------------------------------------------|");
-            System.out.println("\nDigite uma opção: ");
+            System.out.println("\nDigite uma opção:");
             int escolhaBusca = -1;
             try {
                 escolhaBusca = scannerMenus.nextInt();
