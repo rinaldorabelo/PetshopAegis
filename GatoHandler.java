@@ -36,6 +36,8 @@ public class GatoHandler {
         // editar conforme aparecem.--*//
         // *-- Utiliza um while que impede que a String inserida seja nula, vazia e/ou
         // não tenha caracteres.--*//
+        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para diferencia-los
+        // em caso de duplicidade --*//
         boolean isInput = true;
         String nome = "teste";
         while (isInput) {
@@ -154,6 +156,8 @@ public class GatoHandler {
         // decidir se deseja apaga-los também.--*//
         // *-- Utiliza um while que impede que a String inserida seja nula, vazia e/ou
         // não tenha caracteres.--*//
+        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para diferencia-los
+        // em caso de duplicidade --*//
         boolean isInput = true;
         String nome = "teste";
         int removedor = -2;

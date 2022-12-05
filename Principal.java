@@ -481,7 +481,8 @@ public class Principal {
         // especificar o
         // arraylist que está procurando. Caso o tipoPet esteja incorreto, vai devolver
         // -1, dando
-        // erro de ArrayIndexOutOfBoundsException. --*//
+        // erro de ArrayIndexOutOfBoundsException, porém isso só acontece se o dev programar
+        // a função de getIndex errado(). --*//
         int index = -1;
         switch (tipoPet) {
             case "Cachorro":
