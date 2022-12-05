@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class GatoHandler {
@@ -12,10 +13,10 @@ public class GatoHandler {
         System.out.println("Iremos agora cadastrar um novo Gato!!");
         String nome = p.inputNome();
         String raca = p.inputRaca();
+        String pelagem = p.inputPelagem();
         double idade = p.inputIdade();
         double peso = p.inputPeso();
         double altura = p.inputAltura();
-        String pelagem = p.inputPelagem();
         int idcadastro = Principal.gatoArray.size() + Principal.cachorroArray.size() + Principal.passaroArray.size()
                 + 1;
         Principal.gatoArray.add(new Gato(idcadastro, nome, raca, idade, peso, altura, pelagem));
@@ -39,7 +40,11 @@ public class GatoHandler {
         String nome = "teste";
         while (isInput) {
             System.out.println("Digite o nome do gato que deseja editar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -154,7 +159,11 @@ public class GatoHandler {
         int removedor = -2;
         while (isInput) {
             System.out.println("Digite o nome do gato que deseja apagar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -230,7 +239,11 @@ public class GatoHandler {
         String nome = "teste";
         while (isInput) {
             System.out.println("Digite o nome do gato que deseja buscar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -256,7 +269,11 @@ public class GatoHandler {
         String raca = "teste";
         while (isInput) {
             System.out.println("Digite o raça do gato que deseja buscar: ");
-            raca = p.superScanner.nextLine();
+            try {
+                raca = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (raca == null || raca.length() == 0 || raca.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -282,7 +299,11 @@ public class GatoHandler {
         String pelagem = "teste";
         while (isInput) {
             System.out.println("Digite o pelagem do animal que deseja buscar: ");
-            pelagem = p.superScanner.nextLine();
+            try {
+                pelagem = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (pelagem == null || pelagem.length() == 0 || pelagem.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {

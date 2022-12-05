@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Principal {
 
     final Scanner superScanner = new Scanner(System.in);
+    final BufferedReader buffReader = new BufferedReader(new InputStreamReader(System.in));
     // *-- Aqui é definido um scanner como constante de classe para ser usado em
     // todo o código ao invés de abrir múltiplos em vários pontos do código e
     // ficarem abertos gerando um memory sink --* //
@@ -96,7 +100,11 @@ public class Principal {
         String nome = "teste";
         while (isInput) {
             System.out.println("Digite o nome do animal que deseja buscar: ");
-            nome = superScanner.nextLine();
+            try {
+                nome = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -146,7 +154,11 @@ public class Principal {
         String nomeCorrigido;
         while (isInput) {
             System.out.println("Digite o nome do animal: ");
-            nome = superScanner.nextLine();
+            try {
+                nome = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -170,7 +182,11 @@ public class Principal {
         String racaCorrigida;
         while (isInput) {
             System.out.println("Digite a raça do animal: ");
-            raca = superScanner.nextLine();
+            try {
+                raca = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (raca == null || raca.length() == 0 || raca.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -194,7 +210,11 @@ public class Principal {
         String pelagemCorrigida;
         while (isInput) {
             System.out.println("Digite a pelagem do animal: ");
-            pelagem = superScanner.nextLine();
+            try {
+                pelagem = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (pelagem == null || pelagem.length() == 0 || pelagem.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -218,7 +238,11 @@ public class Principal {
         String corPenasCorrigida;
         while (isInput) {
             System.out.println("Digite a cor das penas do pássaro: ");
-            corPenas = superScanner.nextLine();
+            try {
+                corPenas = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (corPenas == null || corPenas.length() == 0 || corPenas.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -242,7 +266,11 @@ public class Principal {
         String corOvosCorrigida;
         while (isInput) {
             System.out.println("Digite a cor dos ovos do ovíparo: ");
-            corOvos = superScanner.nextLine();
+            try {
+                corOvos = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (corOvos == null || corOvos.length() == 0 || corOvos.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -267,7 +295,11 @@ public class Principal {
         String especieCorrigida;
         while (isInput) {
             System.out.println("Digite a especie do pássaro: ");
-            especie = superScanner.nextLine();
+            try {
+                especie = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (especie == null || especie.length() == 0 || especie.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -291,7 +323,11 @@ public class Principal {
         String tipoCorrigido;
         while (isInput) {
             System.out.println("Digite a tipo do pássaro: ");
-            tipo = superScanner.nextLine();
+            try {
+                tipo = buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (tipo == null || tipo.length() == 0 || tipo.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {

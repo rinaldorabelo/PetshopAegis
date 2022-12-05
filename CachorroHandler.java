@@ -1,15 +1,15 @@
 import java.util.InputMismatchException;
+import java.io.IOException;
 
 public class CachorroHandler {
 
     private static final Principal p = new Principal();
+    
 
     public void cadastroCachorro() {
         // *-- Função para cadastrar um novo animal dentro do ArrayList --* //
         // *-- Utiliza funções genéricas com o prefixo "input" para receber as respostas
         // do usuário --*//
-        System.out.println();
-        System.out.println();
         System.out.println("Iremos agora cadastrar um novo Cachorro!!");
         String nome = p.inputNome();
         String raca = p.inputRaca();
@@ -20,8 +20,7 @@ public class CachorroHandler {
                 + 1;
         Principal.cachorroArray.add(new Cachorro(idcadastro, nome, raca, idade, peso, altura));
         System.out.println("Cachorro cadastrado com sucesso!!");
-        p.superScanner.nextLine();
-        System.out.println();
+
     }
 
     public void editarCachorro() {
@@ -41,7 +40,11 @@ public class CachorroHandler {
         String nome = "teste";
         while (isInput) {
             System.out.println("Digite o nome do cachorro que deseja editar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -132,7 +135,7 @@ public class CachorroHandler {
         }
     }
 
-    public void apagarCachorro() {
+    public void apagarCachorro(){
         // *-- Função que apaga registros do arraylist com base no nome inserido. Todo
         // nome
         // é tratado pela função formatador() para que esteja formatado. Utiliza um
@@ -153,7 +156,11 @@ public class CachorroHandler {
         int removedor = -2;
         while (isInput) {
             System.out.println("Digite o nome do cachorro que deseja apagar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -167,6 +174,8 @@ public class CachorroHandler {
                 cachorro.exibirDados();
                 System.out.println();
                 localizadoNome = true;
+            } else {
+                break;
             }
         }
         Integer IDprocurar = -1;
@@ -234,7 +243,11 @@ public class CachorroHandler {
         String nome = "teste";
         while (isInput) {
             System.out.println("Digite o nome do cachorro que deseja buscar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -262,7 +275,11 @@ public class CachorroHandler {
         String raca = "teste";
         while (isInput) {
             System.out.println("Digite a raça do animal que deseja buscar: ");
-            raca = p.superScanner.nextLine();
+            try {
+                raca = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (raca == null || raca.length() == 0 || raca.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {

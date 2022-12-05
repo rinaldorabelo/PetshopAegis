@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class PassaroHandler {
@@ -11,13 +12,13 @@ public class PassaroHandler {
         Principal p = new Principal();
         System.out.println("Iremos agora cadastrar um novo Pássaro!!");
         String nome = p.inputNome();
-        double idade = p.inputIdade();
-        double peso = p.inputPeso();
-        double altura = p.inputAltura();
         String corOvos = p.inputCorOvos();
         String corPenas = p.inputCorPenas();
         String tipo = p.inputTipo();
         String especie = p.inputEspecie();
+        double idade = p.inputIdade();
+        double peso = p.inputPeso();
+        double altura = p.inputAltura();
         int idcadastro = Principal.gatoArray.size() + Principal.cachorroArray.size() + Principal.passaroArray.size()
                 + 1;
         Principal.passaroArray
@@ -42,7 +43,11 @@ public class PassaroHandler {
         String nome = "teste";
         while (isInput) {
             System.out.println("Digite o nome do pássaro que deseja editar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -170,7 +175,11 @@ public class PassaroHandler {
         int removedor = -2;
         while (isInput) {
             System.out.println("Digite o nome do pássaro que deseja apagar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -249,7 +258,11 @@ public class PassaroHandler {
         String nome = "teste";
         while (isInput) {
             System.out.println("Digite o nome do pássaro que deseja buscar: ");
-            nome = p.superScanner.nextLine();
+            try {
+                nome = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -275,7 +288,11 @@ public class PassaroHandler {
         String especie = "teste";
         while (isInput) {
             System.out.println("Digite a espécie do pássaro que deseja buscar: ");
-            especie = p.superScanner.nextLine();
+            try {
+                especie = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (especie == null || especie.length() == 0 || especie.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -301,7 +318,11 @@ public class PassaroHandler {
         String corpena = "teste";
         while (isInput) {
             System.out.println("Digite o corpena do animal que deseja buscar: ");
-            corpena = p.superScanner.nextLine();
+            try {
+                corpena = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (corpena == null || corpena.length() == 0 || corpena.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
@@ -327,7 +348,11 @@ public class PassaroHandler {
         String corOvo = "teste";
         while (isInput) {
             System.out.println("Digite o corOvo do animal que deseja buscar: ");
-            corOvo = p.superScanner.nextLine();
+            try {
+                corOvo = p.buffReader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             if (corOvo == null || corOvo.length() == 0 || corOvo.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
             } else {
