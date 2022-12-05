@@ -39,7 +39,8 @@ public class PassaroHandler {
         // editar conforme aparecem.--*//
         // *-- Utiliza um while que impede que a String inserida seja nula, vazia e/ou
         // não tenha caracteres.--*//
-        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para diferencia-los
+        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para
+        // diferencia-los
         // em caso de duplicidade --*//
         boolean isInput = true;
         String nome = "teste";
@@ -65,23 +66,22 @@ public class PassaroHandler {
                 localizado = true;
             }
         }
-        Integer pesquisaID = -2;
-        while (pesquisaID < 0) {
-            System.out.println("Confirme a ID do passaro que deseja editar: ");
-            try {
-                pesquisaID = p.superScanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            } catch (Exception e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            }
-        }
         if (localizado == true) {
-
+            Integer pesquisaID = -2;
+            while (pesquisaID < 0) {
+                System.out.println("Confirme a ID do passaro que deseja editar: ");
+                try {
+                    pesquisaID = p.superScanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
+                } catch (Exception e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
+                }
+            }
             for (Passaro passaro : Principal.passaroArray) {
                 if (pesquisaID.equals(passaro.getID())) {
                     int rotinaEditarCachorro = -1;
@@ -172,7 +172,8 @@ public class PassaroHandler {
         // decidir se deseja apaga-los também.--*//
         // *-- Utiliza um while que impede que a String inserida seja nula, vazia e/ou
         // não tenha caracteres.--*//
-        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para diferencia-los
+        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para
+        // diferencia-los
         // em caso de duplicidade --*//
         boolean isInput = true;
         String nome = "teste";
@@ -199,43 +200,46 @@ public class PassaroHandler {
                 localizadoNome = true;
             }
         }
-        boolean localizadoIndex = false;
-        Integer IDprocurar = -2;
-        while (IDprocurar < 0) {
-            System.out.println("Confirme a ID do pássaro:");
-            try {
-                IDprocurar = p.superScanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            } catch (Exception e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            }
-        }
         if (localizadoNome == true) {
-            for (Passaro passaro : Principal.passaroArray) {
-                if (IDprocurar.equals(passaro.getID())) {
-                    removedor = p.getIndex(IDprocurar, "Passaro");
-                    passaro.exibirDados();
-                    localizadoIndex = true;
+            boolean localizadoIndex = false;
+            Integer IDprocurar = -2;
+            while (IDprocurar < 0) {
+                System.out.println("Confirme a ID do pássaro:");
+                try {
+                    IDprocurar = p.superScanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
+                } catch (Exception e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
+                }
+            }
+            if (localizadoNome == true) {
+                for (Passaro passaro : Principal.passaroArray) {
+                    if (IDprocurar.equals(passaro.getID())) {
+                        removedor = p.getIndex(IDprocurar, "Passaro");
+                        passaro.exibirDados();
+                        localizadoIndex = true;
+                    }
+                }
+            }
+            if (localizadoIndex == true) {
+                System.out.println("\nDeseja mesmo apagar esse cadastro?");
+                System.out.println("1. Sim\n2. Não");
+                int escolha = p.superScanner.nextInt();
+                p.superScanner.nextLine();
+                if (escolha == 1) {
+                    Principal.cachorroArray.remove(removedor);
+                    System.out.println("Cadastro removido com sucesso.");
+                } else {
+                    System.out.print("Cadastro mantido.");
                 }
             }
         }
-        if (localizadoIndex == true) {
-            System.out.println("\nDeseja mesmo apagar esse cadastro?");
-            System.out.println("1. Sim\n2. Não");
-            int escolha = p.superScanner.nextInt();
-            p.superScanner.nextLine();
-            if (escolha == 1) {
-                Principal.cachorroArray.remove(removedor);
-                System.out.println("Cadastro removido com sucesso.");
-            } else {
-                System.out.print("Cadastro mantido.");
-            }
-        } else {
+        if (localizadoNome == false) {
             System.out.println("Nome não localizado!!");
         }
     }

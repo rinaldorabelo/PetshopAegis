@@ -4,7 +4,6 @@ import java.io.IOException;
 public class CachorroHandler {
 
     private static final Principal p = new Principal();
-    
 
     public void cadastroCachorro() {
         // *-- Função para cadastrar um novo animal dentro do ArrayList --* //
@@ -36,7 +35,8 @@ public class CachorroHandler {
         // editar conforme aparecem.--*//
         // *-- Utiliza um while que impede que a String inserida seja nula, vazia e/ou
         // não tenha caracteres.--*//
-        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para diferencia-los
+        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para
+        // diferencia-los
         // em caso de duplicidade --*//
         boolean isInput = true;
         String nome = "teste";
@@ -62,82 +62,83 @@ public class CachorroHandler {
                 localizado = true;
             }
         }
-
-        Integer pesquisaID = -1;
-        while (pesquisaID < 0) {
-            System.out.println("Confirme a ID do cachorro que deseja editar: ");
-            try {
-                pesquisaID = p.superScanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            } catch (Exception e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            }
-        }
-
-        if (localizado == true) {
-            for (Cachorro cachorro : Principal.cachorroArray) {
-                if (pesquisaID.equals(cachorro.getID())) {
-                    int rotinaEditarCachorro = -1;
-                    while (rotinaEditarCachorro != 99) {
-                        cachorro.exibirDados();
-                        System.out.println("\nDigite o dado que deseja editar: ");
-                        System.out.println("1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura");
-                        System.out.println("Digite [99] para sair desse cadastro");
-                        int operador = -1;
-                        try {
-                            operador = p.superScanner.nextInt();
-                            p.superScanner.nextLine();
-                        } catch (InputMismatchException e) {
-                            p.superScanner.next();
-                            System.out.println();
-                        } catch (Exception e) {
-                            p.superScanner.next();
-                            System.out.println();
-                        }
-                        switch (operador) {
-                            case 1:
-                                String newNome = p.inputNome();
-                                cachorro.setNome(newNome);
-                                break;
-                            case 2:
-                                String newRaca = p.inputRaca();
-                                cachorro.setRaca(newRaca);
-                                break;
-                            case 3:
-                                double newPeso = p.inputPeso();
-                                cachorro.setPeso(newPeso);
-                                break;
-                            case 4:
-                                double newIdade = p.inputIdade();
-                                cachorro.setIdade(newIdade);
-                                break;
-                            case 5:
-                                double newAltura = p.inputAltura();
-                                cachorro.setAltura(newAltura);
-                                break;
-                            case 99:
-                                System.out.println("Encerrando subrotina.");
-                                rotinaEditarCachorro = 99;
-                                break;
-                            default:
-                                System.out.println("Erro!! Tente novamente");
-                        }
-                    }
-                    localizado = true;
-                }
-            }
-        }
         if (localizado == false) {
             System.out.println("Nome não localizado!!");
         }
+        if (localizado == true) {
+            Integer pesquisaID = -1;
+            while (pesquisaID < 0) {
+                System.out.println("Confirme a ID do cachorro que deseja editar: ");
+                try {
+                    pesquisaID = p.superScanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
+                } catch (Exception e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
+                }
+            }
+
+            if (localizado == true) {
+                for (Cachorro cachorro : Principal.cachorroArray) {
+                    if (pesquisaID.equals(cachorro.getID())) {
+                        int rotinaEditarCachorro = -1;
+                        while (rotinaEditarCachorro != 99) {
+                            cachorro.exibirDados();
+                            System.out.println("\nDigite o dado que deseja editar: ");
+                            System.out.println("1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura");
+                            System.out.println("Digite [99] para sair desse cadastro");
+                            int operador = -1;
+                            try {
+                                operador = p.superScanner.nextInt();
+                                p.superScanner.nextLine();
+                            } catch (InputMismatchException e) {
+                                p.superScanner.next();
+                                System.out.println();
+                            } catch (Exception e) {
+                                p.superScanner.next();
+                                System.out.println();
+                            }
+                            switch (operador) {
+                                case 1:
+                                    String newNome = p.inputNome();
+                                    cachorro.setNome(newNome);
+                                    break;
+                                case 2:
+                                    String newRaca = p.inputRaca();
+                                    cachorro.setRaca(newRaca);
+                                    break;
+                                case 3:
+                                    double newPeso = p.inputPeso();
+                                    cachorro.setPeso(newPeso);
+                                    break;
+                                case 4:
+                                    double newIdade = p.inputIdade();
+                                    cachorro.setIdade(newIdade);
+                                    break;
+                                case 5:
+                                    double newAltura = p.inputAltura();
+                                    cachorro.setAltura(newAltura);
+                                    break;
+                                case 99:
+                                    System.out.println("Encerrando subrotina.");
+                                    rotinaEditarCachorro = 99;
+                                    break;
+                                default:
+                                    System.out.println("Erro!! Tente novamente");
+                            }
+                        }
+                        localizado = true;
+                    }
+                }
+            }
+        }
     }
 
-    public void apagarCachorro(){
+    public void apagarCachorro() {
         // *-- Função que apaga registros do arraylist com base no nome inserido. Todo
         // nome
         // é tratado pela função formatador() para que esteja formatado. Utiliza um
@@ -153,7 +154,8 @@ public class CachorroHandler {
         // decidir se deseja apaga-los também.--*//
         // *-- Utiliza um while que impede que a String inserida seja nula, vazia e/ou
         // não tenha caracteres.--*//
-        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para diferencia-los
+        // *-- O sistema de cadastros utiliza uma id única atribuida a cada animal para
+        // diferencia-los
         // em caso de duplicidade --*//
         boolean isInput = true;
         String nome = "teste";
@@ -178,48 +180,49 @@ public class CachorroHandler {
                 cachorro.exibirDados();
                 System.out.println();
                 localizadoNome = true;
-            } else {
-                break;
             }
         }
-        Integer IDprocurar = -1;
-        while (IDprocurar < 0) {
-            System.out.println("Confirme a ID do cachorro:");
-            try {
-                IDprocurar = p.superScanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            } catch (Exception e) {
-                System.out.println("Erro! Tente novamente.");
-                p.superScanner.next();
-                System.out.println();
-            }
+        if (localizadoNome == false) {
+            System.out.println("Nome não localizado!!");
         }
-        boolean localizadoIndex = false;
         if (localizadoNome == true) {
-            for (Cachorro cachorro : Principal.cachorroArray) {
-                if (IDprocurar.equals(cachorro.getID())) {
-                    removedor = p.getIndex(IDprocurar, "Cachorro");
-                    cachorro.exibirDados();
-                    localizadoIndex = true;
+            Integer IDprocurar = -1;
+            while (IDprocurar < 0) {
+                System.out.println("Confirme a ID do cachorro:");
+                try {
+                    IDprocurar = p.superScanner.nextInt();
+                } catch (InputMismatchException e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
+                } catch (Exception e) {
+                    System.out.println("Erro! Tente novamente.");
+                    p.superScanner.next();
+                    System.out.println();
                 }
             }
-        }
-        if (localizadoIndex == true) {
-            System.out.println("\nDeseja mesmo apagar esse cadastro?");
-            System.out.println("1. Sim\n2. Não");
-            int escolha = p.superScanner.nextInt();
-            p.superScanner.nextLine();
-            if (escolha == 1) {
-                Principal.cachorroArray.remove(removedor);
-                System.out.println("Cadastro removido com sucesso.");
-            } else {
-                System.out.print("Cadastro mantido.");
+            boolean localizadoIndex = false;
+            if (localizadoNome == true) {
+                for (Cachorro cachorro : Principal.cachorroArray) {
+                    if (IDprocurar.equals(cachorro.getID())) {
+                        removedor = p.getIndex(IDprocurar, "Cachorro");
+                        cachorro.exibirDados();
+                        localizadoIndex = true;
+                    }
+                }
             }
-        } else {
-            System.out.println("Nome não localizado!!");
+            if (localizadoIndex == true) {
+                System.out.println("\nDeseja mesmo apagar esse cadastro?");
+                System.out.println("1. Sim\n2. Não");
+                int escolha = p.superScanner.nextInt();
+                p.superScanner.nextLine();
+                if (escolha == 1) {
+                    Principal.cachorroArray.remove(removedor);
+                    System.out.println("Cadastro removido com sucesso.");
+                } else {
+                    System.out.print("Cadastro mantido.");
+                }
+            }
         }
     }
 
