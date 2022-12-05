@@ -16,7 +16,9 @@ public class GatoHandler {
         double peso = p.inputPeso();
         double altura = p.inputAltura();
         String pelagem = p.inputPelagem();
-        Principal.gatoArray.add(new Gato(nome, raca, idade, peso, altura, pelagem));
+        int idcadastro = Principal.gatoArray.size() + Principal.cachorroArray.size() + Principal.passaroArray.size()
+                + 1;
+        Principal.gatoArray.add(new Gato(idcadastro, nome, raca, idade, peso, altura, pelagem));
         System.out.println("Gato cadastrado com sucesso!! ");
     }
 
@@ -35,8 +37,6 @@ public class GatoHandler {
         // não tenha caracteres.--*//
         boolean isInput = true;
         String nome = "teste";
-        String nomeCorrigido;
-        boolean localizado = false;
         while (isInput) {
             System.out.println("Digite o nome do gato que deseja editar: ");
             nome = p.superScanner.nextLine();
@@ -46,66 +46,91 @@ public class GatoHandler {
                 isInput = false;
             }
         }
-        nomeCorrigido = p.formatador(nome);
+        String nomeCorrigido = p.formatador(nome);
+        boolean localizado = false;
         for (Gato gato : Principal.gatoArray) {
             if (nomeCorrigido.contains(gato.getNome())) {
-                int rotinaEditarGato = -1;
-                while (rotinaEditarGato != 99) {
-                    gato.exibirDados();
-                    System.out.println("\nDigite o dado que deseja editar: ");
-                    System.out.println("1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura\n6. Pelagem");
-                    System.out.println("Digite [99] para sair desse cadastro");
-                    int operador = -1;
-                    try {
-                        operador = p.superScanner.nextInt();
-                        p.superScanner.nextLine();
-                    } catch (InputMismatchException e) {
-                        p.superScanner.next();
-                        System.out.println();
-                    } catch (Exception e) {
-                        p.superScanner.next();
-                        System.out.println();
-                    }
-                    switch (operador) {
-                        case 1:
-                            String newNome = p.inputNome();
-                            gato.setNome(newNome);
-                            break;
-                        case 2:
-                            String newRaca = p.inputRaca();
-                            gato.setRaca(newRaca);
-                            break;
-                        case 3:
-                            double newPeso = p.inputPeso();
-                            gato.setPeso(newPeso);
-                            break;
-                        case 4:
-                            double newIdade = p.inputIdade();
-                            gato.setIdade(newIdade);
-                            break;
-                        case 5:
-                            double newAltura = p.inputAltura();
-                            gato.setAltura(newAltura);
-                            break;
-                        case 6:
-                            String newPelagem = p.inputPelagem();
-                            gato.setPelagem(newPelagem);
-                            break;
-                        case 99:
-                            System.out.println("Encerrando subrotina.");
-                            rotinaEditarGato = 99;
-                            break;
-                        default:
-                            System.out.println("Erro!! Tente novamente");
-                    }
-                }
+                gato.exibirDados();
+                System.out.println();
                 localizado = true;
+            }
+        }
+        Integer pesquisaID = -1;
+        while (pesquisaID < 0) {
+            System.out.println("Confirme a ID do gato que deseja editar: ");
+            try {
+                pesquisaID = p.superScanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            } catch (Exception e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            }
+        }
+
+        if (localizado == true) {
+            for (Gato gato : Principal.gatoArray) {
+                if (pesquisaID.equals(gato.getID())) {
+                    int rotinaEditarCachorro = -1;
+                    while (rotinaEditarCachorro != 99) {
+                        gato.exibirDados();
+                        System.out.println("\nDigite o dado que deseja editar: ");
+                        System.out.println("1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura\n6. Pelagem");
+                        System.out.println("Digite [99] para sair desse cadastro");
+                        int operador = -1;
+                        try {
+                            operador = p.superScanner.nextInt();
+                            p.superScanner.nextLine();
+                        } catch (InputMismatchException e) {
+                            p.superScanner.next();
+                            System.out.println();
+                        } catch (Exception e) {
+                            p.superScanner.next();
+                            System.out.println();
+                        }
+                        switch (operador) {
+                            case 1:
+                                String newNome = p.inputNome();
+                                gato.setNome(newNome);
+                                break;
+                            case 2:
+                                String newRaca = p.inputRaca();
+                                gato.setRaca(newRaca);
+                                break;
+                            case 3:
+                                double newPeso = p.inputPeso();
+                                gato.setPeso(newPeso);
+                                break;
+                            case 4:
+                                double newIdade = p.inputIdade();
+                                gato.setIdade(newIdade);
+                                break;
+                            case 5:
+                                double newAltura = p.inputAltura();
+                                gato.setAltura(newAltura);
+                                break;
+                            case 6:
+                                String newPelagem = p.inputPelagem();
+                                gato.setPelagem(newPelagem);
+                                break;
+                            case 99:
+                                System.out.println("Encerrando subrotina.");
+                                rotinaEditarCachorro = 99;
+                                break;
+                            default:
+                                System.out.println("Erro!! Tente novamente");
+                        }
+                    }
+                    localizado = true;
+                }
             }
         }
         if (localizado == false) {
             System.out.println("Nome não localizado!!");
         }
-
     }
 
     public void apagarGato() {
@@ -126,8 +151,7 @@ public class GatoHandler {
         // não tenha caracteres.--*//
         boolean isInput = true;
         String nome = "teste";
-        String nomeCorrigido;
-        boolean localizado = false;
+        int removedor = -2;
         while (isInput) {
             System.out.println("Digite o nome do gato que deseja apagar: ");
             nome = p.superScanner.nextLine();
@@ -137,16 +161,42 @@ public class GatoHandler {
                 isInput = false;
             }
         }
-        nomeCorrigido = p.formatador(nome);
-        int removedor = -2;
+        String nomeCorrigido = p.formatador(nome);
+        boolean localizadoNome = false;
         for (Gato gato : Principal.gatoArray) {
             if (nomeCorrigido.contains(gato.getNome())) {
-                removedor = p.getIndex(nomeCorrigido, "Gato");
                 gato.exibirDados();
-                localizado = true;
+                System.out.println();
+                localizadoNome = true;
             }
         }
-        if (localizado == true) {
+        boolean localizadoIndex = false;
+        Integer IDprocurar = -1;
+        while (IDprocurar < 0) {
+            System.out.println("Confirme a ID do gato:");
+            try {
+                IDprocurar = p.superScanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            } catch (Exception e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            }
+        }
+        if (localizadoNome == true) {
+
+            for (Gato gato : Principal.gatoArray) {
+                if (IDprocurar.equals(gato.getID())) {
+                    removedor = p.getIndex(IDprocurar, "Gato");
+                    gato.exibirDados();
+                    localizadoIndex = true;
+                }
+            }
+        }
+        if (localizadoIndex == true) {
             System.out.println("\nDeseja mesmo apagar esse cadastro?");
             System.out.println("1. Sim\n2. Não");
             int escolha = p.superScanner.nextInt();
@@ -201,7 +251,7 @@ public class GatoHandler {
         }
     }
 
-    public void buscarRacaGato(){
+    public void buscarRacaGato() {
         boolean isInput = true;
         String raca = "teste";
         while (isInput) {

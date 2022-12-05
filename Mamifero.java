@@ -5,13 +5,15 @@ public class Mamifero extends Animal {// *-- Criação da classe -- *//
     private String alimento;
 
     // *-- Criação do construtor da classe -- * //
-    public Mamifero(String nome, String raca, double idade, double peso, double altura) {
-        super(nome, raca, idade, peso, altura);
+    public Mamifero(String nome, String raca, double idade, double peso, double altura, int ID) {
+        super(nome, raca, idade, peso, altura, ID);
         setNome(nome);
         
         setIdade(idade);
         
         setAltura(altura);
+
+        setID(ID);
     }
 
     // *-- Criação dos métodos getters e setters --* //

@@ -7,9 +7,10 @@ public abstract class Animal { // *-- Criação da classe -- *//
     private double idade;
     private double peso;
     private double altura;
+    private int ID;
 
    // *-- Criação do construtor da classe -- * //
-    public Animal(String nome, String raca, double idade, double peso, double altura) {
+    public Animal(String nome, String raca, double idade, double peso, double altura, int ID) {
       
     }
 
@@ -52,5 +53,13 @@ public abstract class Animal { // *-- Criação da classe -- *//
 
     public void setAltura(double altura) {
         this.altura = altura;
+    }
+
+    public int getID(){
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }

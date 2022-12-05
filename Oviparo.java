@@ -4,12 +4,13 @@ public class Oviparo extends Animal{
     private String corOvos;
 
     //*-- Construtor do objeto da classe --*//
-    public Oviparo(String nome, String tipo, double idade, double peso, double altura) {
-        super(nome, tipo, idade, peso, altura);
+    public Oviparo( String nome, String tipo, double idade, double peso, double altura, int ID) {
+        super(nome, tipo, idade, peso, altura, ID);
         setNome(nome);
         setIdade(idade);
         setAltura(altura);
         setTipo(tipo);
+        setID(ID);
     }
 
     //*-- Gets e sets --*//

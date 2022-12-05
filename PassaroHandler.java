@@ -18,7 +18,10 @@ public class PassaroHandler {
         String corPenas = p.inputCorPenas();
         String tipo = p.inputTipo();
         String especie = p.inputEspecie();
-        Principal.passaroArray.add(new Passaro(nome, tipo, especie, idade, peso, altura, corPenas, corOvos));
+        int idcadastro = Principal.gatoArray.size() + Principal.cachorroArray.size() + Principal.passaroArray.size()
+                + 1;
+        Principal.passaroArray
+                .add(new Passaro(idcadastro, nome, tipo, especie, idade, peso, altura, corPenas, corOvos));
         System.out.println("Pássaro cadastrado com sucesso!! ");
     }
 
@@ -37,8 +40,6 @@ public class PassaroHandler {
         // não tenha caracteres.--*//
         boolean isInput = true;
         String nome = "teste";
-        String nomeCorrigido;
-        boolean localizado = false;
         while (isInput) {
             System.out.println("Digite o nome do pássaro que deseja editar: ");
             nome = p.superScanner.nextLine();
@@ -48,69 +49,99 @@ public class PassaroHandler {
                 isInput = false;
             }
         }
-        nomeCorrigido = p.formatador(nome);
+        String nomeCorrigido = p.formatador(nome);
+        boolean localizado = false;
         for (Passaro passaro : Principal.passaroArray) {
             if (nomeCorrigido.contains(passaro.getNome())) {
-                int rotinaEditarPassaro = -1;
-                while (rotinaEditarPassaro != 99) {
-                    passaro.exibirDados();
-                    System.out.println("\nDigite o dado que deseja editar: ");
-                    System.out.println(
-                            "1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura\n6. Cor dos Ovos\n7. Tipo\n8. Espécie");
-                    System.out.println("Digite [99] para sair desse cadastro");
-                    int operador = -1;
-                    try {
-                        operador = p.superScanner.nextInt();
-                        p.superScanner.nextLine();
-                    } catch (InputMismatchException e) {
-                        p.superScanner.next();
-                        System.out.println();
-                    } catch (Exception e) {
-                        p.superScanner.next();
-                        System.out.println();
-                    }
-                    switch (operador) {
-                        case 1:
-                            String newNome = p.inputNome();
-                            passaro.setNome(newNome);
-                            break;
-                        case 2:
-                            String newRaca = p.inputRaca();
-                            passaro.setRaca(newRaca);
-                            break;
-                        case 3:
-                            double newPeso = p.inputPeso();
-                            passaro.setPeso(newPeso);
-                            break;
-                        case 4:
-                            double newIdade = p.inputIdade();
-                            passaro.setIdade(newIdade);
-                            break;
-                        case 5:
-                            double newAltura = p.inputAltura();
-                            passaro.setAltura(newAltura);
-                            break;
-                        case 6:
-                            String newOvo = p.inputCorOvos();
-                            passaro.setCorOvos(newOvo);
-                            break;
-                        case 7:
-                            String newTipo = p.inputTipo();
-                            passaro.setTipo(newTipo);
-                            break;
-                        case 8:
-                            String newEspecie = p.inputEspecie();
-                            passaro.setEspecie(newEspecie);
-                            break;
-                        case 99:
-                            System.out.println("Encerrando subrotina.");
-                            rotinaEditarPassaro = 99;
-                            break;
-                        default:
-                            System.out.println("Erro!! Tente novamente");
-                    }
-                }
+                passaro.exibirDados();
+                System.out.println();
                 localizado = true;
+            }
+        }
+        Integer pesquisaID = -2;
+        while (pesquisaID < 0) {
+            System.out.println("Confirme a ID do passaro que deseja editar: ");
+            try {
+                pesquisaID = p.superScanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            } catch (Exception e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            }
+        }
+        if (localizado == true) {
+
+            for (Passaro passaro : Principal.passaroArray) {
+                if (pesquisaID.equals(passaro.getID())) {
+                    int rotinaEditarCachorro = -1;
+                    while (rotinaEditarCachorro != 99) {
+                        passaro.exibirDados();
+                        System.out.println("\nDigite o dado que deseja editar: ");
+                        System.out.println(
+                                "1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura\n6. Cor dos Ovos\n7. Tipo\n8. Espécie\n9. Cor das Penas");
+                        System.out.println("Digite [99] para sair desse cadastro");
+                        int operador = -1;
+                        try {
+                            operador = p.superScanner.nextInt();
+                            p.superScanner.nextLine();
+                        } catch (InputMismatchException e) {
+                            p.superScanner.next();
+                            System.out.println();
+                        } catch (Exception e) {
+                            p.superScanner.next();
+                            System.out.println();
+                        }
+                        switch (operador) {
+                            case 1:
+                                String newNome = p.inputNome();
+                                passaro.setNome(newNome);
+                                break;
+                            case 2:
+                                String newRaca = p.inputRaca();
+                                passaro.setRaca(newRaca);
+                                break;
+                            case 3:
+                                double newPeso = p.inputPeso();
+                                passaro.setPeso(newPeso);
+                                break;
+                            case 4:
+                                double newIdade = p.inputIdade();
+                                passaro.setIdade(newIdade);
+                                break;
+                            case 5:
+                                double newAltura = p.inputAltura();
+                                passaro.setAltura(newAltura);
+                                break;
+                            case 6:
+                                String newOvo = p.inputCorOvos();
+                                passaro.setCorOvos(newOvo);
+                                break;
+                            case 7:
+                                String newTipo = p.inputTipo();
+                                passaro.setTipo(newTipo);
+                                break;
+                            case 8:
+                                String newEspecie = p.inputEspecie();
+                                passaro.setEspecie(newEspecie);
+                                break;
+                            case 9:
+                                String newPenas = p.inputCorPenas();
+                                passaro.setCorPenas(newPenas);
+                                break;
+                            case 99:
+                                System.out.println("Encerrando subrotina.");
+                                rotinaEditarCachorro = 99;
+                                break;
+                            default:
+                                System.out.println("Erro!! Tente novamente");
+                        }
+                    }
+                    localizado = true;
+                }
             }
         }
         if (localizado == false) {
@@ -136,10 +167,9 @@ public class PassaroHandler {
         // não tenha caracteres.--*//
         boolean isInput = true;
         String nome = "teste";
-        String nomeCorrigido;
-        boolean localizado = false;
+        int removedor = -2;
         while (isInput) {
-            System.out.println("Digite o nome do pássaro que deseja editar: ");
+            System.out.println("Digite o nome do pássaro que deseja apagar: ");
             nome = p.superScanner.nextLine();
             if (nome == null || nome.length() == 0 || nome.isEmpty()) {
                 System.out.println("Erro! Tente novamente");
@@ -147,22 +177,47 @@ public class PassaroHandler {
                 isInput = false;
             }
         }
-        nomeCorrigido = p.formatador(nome);
-        int removedor = -2;
+        String nomeCorrigido = p.formatador(nome);
+        boolean localizadoNome = false;
         for (Passaro passaro : Principal.passaroArray) {
             if (nomeCorrigido.contains(passaro.getNome())) {
-                removedor = p.getIndex(nomeCorrigido, "Passaro");
                 passaro.exibirDados();
-                localizado = true;
+                System.out.println();
+                localizadoNome = true;
             }
         }
-        if (localizado == true) {
+        boolean localizadoIndex = false;
+        Integer IDprocurar = -2;
+        while (IDprocurar < 0) {
+            System.out.println("Confirme a ID do pássaro:");
+            try {
+                IDprocurar = p.superScanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            } catch (Exception e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            }
+        }
+        if (localizadoNome == true) {
+            for (Passaro passaro : Principal.passaroArray) {
+                if (IDprocurar.equals(passaro.getID())) {
+                    removedor = p.getIndex(IDprocurar, "Passaro");
+                    passaro.exibirDados();
+                    localizadoIndex = true;
+                }
+            }
+        }
+        if (localizadoIndex == true) {
             System.out.println("\nDeseja mesmo apagar esse cadastro?");
             System.out.println("1. Sim\n2. Não");
             int escolha = p.superScanner.nextInt();
             p.superScanner.nextLine();
             if (escolha == 1) {
-                Principal.passaroArray.remove(removedor);
+                Principal.cachorroArray.remove(removedor);
                 System.out.println("Cadastro removido com sucesso.");
             } else {
                 System.out.print("Cadastro mantido.");
@@ -255,7 +310,7 @@ public class PassaroHandler {
         }
         String corpenaCorrigido = p.formatador(corpena);
         boolean localizado = false;
-        for (Passaro passaro : Principal.passaroArray){
+        for (Passaro passaro : Principal.passaroArray) {
             if (corpenaCorrigido.contains(passaro.getCorPenas())) {
                 passaro.exibirDados();
                 System.out.println();

@@ -8,17 +8,23 @@ public class CachorroHandler {
         // *-- Função para cadastrar um novo animal dentro do ArrayList --* //
         // *-- Utiliza funções genéricas com o prefixo "input" para receber as respostas
         // do usuário --*//
+        System.out.println();
+        System.out.println();
         System.out.println("Iremos agora cadastrar um novo Cachorro!!");
         String nome = p.inputNome();
         String raca = p.inputRaca();
         double idade = p.inputIdade();
         double peso = p.inputPeso();
         double altura = p.inputAltura();
-        Principal.cachorroArray.add(new Cachorro(nome, raca, idade, peso, altura));
+        int idcadastro = Principal.gatoArray.size() + Principal.cachorroArray.size() + Principal.passaroArray.size()
+                + 1;
+        Principal.cachorroArray.add(new Cachorro(idcadastro, nome, raca, idade, peso, altura));
         System.out.println("Cachorro cadastrado com sucesso!!");
+        p.superScanner.nextLine();
+        System.out.println();
     }
 
-    public void editarCachorro(){
+    public void editarCachorro() {
         // *-- Função responsável por editar um registro no sistema. Depois de encontrar
         // o registro
         // ela entra em loop e permanece até o usuário sair. Usa switch case para
@@ -33,8 +39,6 @@ public class CachorroHandler {
         // não tenha caracteres.--*//
         boolean isInput = true;
         String nome = "teste";
-        String nomeCorrigido;
-        boolean localizado = false;
         while (isInput) {
             System.out.println("Digite o nome do cachorro que deseja editar: ");
             nome = p.superScanner.nextLine();
@@ -44,56 +48,83 @@ public class CachorroHandler {
                 isInput = false;
             }
         }
-        nomeCorrigido = p.formatador(nome);
+        String nomeCorrigido = p.formatador(nome);
+        boolean localizado = false;
         for (Cachorro cachorro : Principal.cachorroArray) {
             if (nomeCorrigido.contains(cachorro.getNome())) {
-                int rotinaEditarCachorro = -1;
-                while (rotinaEditarCachorro != 99) {
-                    cachorro.exibirDados();
-                    System.out.println("\nDigite o dado que deseja editar: ");
-                    System.out.println("1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura");
-                    System.out.println("Digite [99] para sair desse cadastro");
-                    int operador = -1;
-                    try {
-                        operador = p.superScanner.nextInt();
-                        p.superScanner.nextLine();
-                    } catch (InputMismatchException e) {
-                        p.superScanner.next();
-                        System.out.println();
-                    } catch (Exception e) {
-                        p.superScanner.next();
-                        System.out.println();
-                    }
-                    switch (operador) {
-                        case 1:
-                            String newNome = p.inputNome();
-                            cachorro.setNome(newNome);
-                            break;
-                        case 2:
-                            String newRaca = p.inputRaca();
-                            cachorro.setRaca(newRaca);
-                            break;
-                        case 3:
-                            double newPeso = p.inputPeso();
-                            cachorro.setPeso(newPeso);
-                            break;
-                        case 4:
-                            double newIdade = p.inputIdade();
-                            cachorro.setIdade(newIdade);
-                            break;
-                        case 5:
-                            double newAltura = p.inputAltura();
-                            cachorro.setAltura(newAltura);
-                            break;
-                        case 99:
-                            System.out.println("Encerrando subrotina.");
-                            rotinaEditarCachorro = 99;
-                            break;
-                        default:
-                            System.out.println("Erro!! Tente novamente");
-                    }
-                }
+                cachorro.exibirDados();
+                System.out.println();
                 localizado = true;
+            }
+        }
+
+        Integer pesquisaID = -1;
+        while (pesquisaID < 0) {
+            System.out.println("Confirme a ID do cachorro que deseja editar: ");
+            try {
+                pesquisaID = p.superScanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            } catch (Exception e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            }
+        }
+
+        if (localizado == true) {
+            for (Cachorro cachorro : Principal.cachorroArray) {
+                if (pesquisaID.equals(cachorro.getID())) {
+                    int rotinaEditarCachorro = -1;
+                    while (rotinaEditarCachorro != 99) {
+                        cachorro.exibirDados();
+                        System.out.println("\nDigite o dado que deseja editar: ");
+                        System.out.println("1. Nome\n2. Raça\n3. Peso\n4. Idade\n5. Altura");
+                        System.out.println("Digite [99] para sair desse cadastro");
+                        int operador = -1;
+                        try {
+                            operador = p.superScanner.nextInt();
+                            p.superScanner.nextLine();
+                        } catch (InputMismatchException e) {
+                            p.superScanner.next();
+                            System.out.println();
+                        } catch (Exception e) {
+                            p.superScanner.next();
+                            System.out.println();
+                        }
+                        switch (operador) {
+                            case 1:
+                                String newNome = p.inputNome();
+                                cachorro.setNome(newNome);
+                                break;
+                            case 2:
+                                String newRaca = p.inputRaca();
+                                cachorro.setRaca(newRaca);
+                                break;
+                            case 3:
+                                double newPeso = p.inputPeso();
+                                cachorro.setPeso(newPeso);
+                                break;
+                            case 4:
+                                double newIdade = p.inputIdade();
+                                cachorro.setIdade(newIdade);
+                                break;
+                            case 5:
+                                double newAltura = p.inputAltura();
+                                cachorro.setAltura(newAltura);
+                                break;
+                            case 99:
+                                System.out.println("Encerrando subrotina.");
+                                rotinaEditarCachorro = 99;
+                                break;
+                            default:
+                                System.out.println("Erro!! Tente novamente");
+                        }
+                    }
+                    localizado = true;
+                }
             }
         }
         if (localizado == false) {
@@ -119,8 +150,7 @@ public class CachorroHandler {
         // não tenha caracteres.--*//
         boolean isInput = true;
         String nome = "teste";
-        String nomeCorrigido;
-        boolean localizado = false;
+        int removedor = -2;
         while (isInput) {
             System.out.println("Digite o nome do cachorro que deseja apagar: ");
             nome = p.superScanner.nextLine();
@@ -130,16 +160,41 @@ public class CachorroHandler {
                 isInput = false;
             }
         }
-        nomeCorrigido = p.formatador(nome);
-        int removedor = -2;
+        String nomeCorrigido = p.formatador(nome);
+        boolean localizadoNome = false;
         for (Cachorro cachorro : Principal.cachorroArray) {
             if (nomeCorrigido.contains(cachorro.getNome())) {
-                removedor = p.getIndex(nomeCorrigido, "Cachorro");
                 cachorro.exibirDados();
-                localizado = true;
+                System.out.println();
+                localizadoNome = true;
             }
         }
-        if (localizado == true) {
+        Integer IDprocurar = -1;
+        while (IDprocurar < 0) {
+            System.out.println("Confirme a ID do cachorro:");
+            try {
+                IDprocurar = p.superScanner.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            } catch (Exception e) {
+                System.out.println("Erro! Tente novamente.");
+                p.superScanner.next();
+                System.out.println();
+            }
+        }
+        boolean localizadoIndex = false;
+        if (localizadoNome == true) {
+            for (Cachorro cachorro : Principal.cachorroArray) {
+                if (IDprocurar.equals(cachorro.getID())) {
+                    removedor = p.getIndex(IDprocurar, "Cachorro");
+                    cachorro.exibirDados();
+                    localizadoIndex = true;
+                }
+            }
+        }
+        if (localizadoIndex == true) {
             System.out.println("\nDeseja mesmo apagar esse cadastro?");
             System.out.println("1. Sim\n2. Não");
             int escolha = p.superScanner.nextInt();
@@ -173,6 +228,8 @@ public class CachorroHandler {
     }
 
     public void buscarNomeCachorro() {
+        System.out.println();
+        System.out.println();
         boolean isInput = true;
         String nome = "teste";
         while (isInput) {
@@ -199,6 +256,8 @@ public class CachorroHandler {
     }
 
     public void buscarRacaCachorro() {
+        System.out.println();
+        System.out.println();
         boolean isInput = true;
         String raca = "teste";
         while (isInput) {

@@ -7,8 +7,7 @@ public class Principal {
     final Scanner superScanner = new Scanner(System.in);
     // *-- Aqui é definido um scanner como constante de classe para ser usado em
     // todo o código ao invés de abrir múltiplos em vários pontos do código e
-    // ficarem abertos
-    // gerando um memory sink --* //
+    // ficarem abertos gerando um memory sink --* //
     public static final ArrayList<Cachorro> cachorroArray = new ArrayList<Cachorro>();
     public static final ArrayList<Gato> gatoArray = new ArrayList<Gato>();
     public static final ArrayList<Passaro> passaroArray = new ArrayList<Passaro>();
@@ -17,33 +16,32 @@ public class Principal {
         // * -- Criação do ArrayList de Cachorro -- * //
 
         // *-- Criação dos cadastros dos Cachorros dentro do ArrayList --* //
-        cachorroArray.add(new Cachorro("Caramelo", "Vira Lata", 5, 10.0, 0.80));
-        cachorroArray.add(new Cachorro("Farinha", "Shitzu", 3, 1.0, 0.30));
-        cachorroArray.add(new Cachorro("Rex", "Pitbull", 2, 20.5, 1.20));
-        cachorroArray.add(new Cachorro("Teemo", "Chow-Chow", 6, 6.6, 0.90));
-        cachorroArray.add(new Cachorro("Bethoveen", "Labrador", 3, 10, 1.00));
-        cachorroArray.add(new Cachorro("Bidu", "Vira Lata", 9, 0.60, 5.80));
-        cachorroArray.add(new Cachorro("Gragas", "Vira Lata", 1, 50.09, 2.3));
-        cachorroArray.add(new Cachorro("Swain", "Labrador", 15, 10.5, 0.48));
+        cachorroArray.add(new Cachorro(1, "Caramelo", "Vira Lata", 5, 10.0, 0.80));
+        cachorroArray.add(new Cachorro(2, "Farinha", "Shitzu", 3, 1.0, 0.30));
+        cachorroArray.add(new Cachorro(3, "Rex", "Pitbull", 2, 20.5, 1.20));
+        cachorroArray.add(new Cachorro(4, "Teemo", "Chow-Chow", 6, 6.6, 0.90));
+        cachorroArray.add(new Cachorro(5, "Bethoveen", "Labrador", 3, 10, 1.00));
+        cachorroArray.add(new Cachorro(6, "Bidu", "Vira Lata", 9, 0.60, 5.80));
+        cachorroArray.add(new Cachorro(7, "Gragas", "Vira Lata", 1, 50.09, 2.3));
+        cachorroArray.add(new Cachorro(8, "Swain", "Labrador", 15, 10.5, 0.48));
 
         // *-- Criação dos cadastros dos Gatos dentro do ArrayList --* //
-        gatoArray.add(new Gato("Belle", "Vira Lata", 2, 4, 1, "Rajada"));
-        gatoArray.add(new Gato("Pingus", "Sphynx", 6, 3, 1, "Careca"));
-        gatoArray.add(new Gato("Ganfalf", "Americano", 1, 3, 1, "Curta"));
-        gatoArray.add(new Gato("Bob", "Siamês", 8, 6, 1, "Longa"));
-        gatoArray.add(new Gato("Selina", "Vira Lata", 7, 8, 1, "Ondulada"));
+        gatoArray.add(new Gato(9, "Belle", "Vira Lata", 2, 4, 1, "Rajada"));
+        gatoArray.add(new Gato(10, "Pingus", "Sphynx", 6, 3, 1, "Careca"));
+        gatoArray.add(new Gato(11, "Ganfalf", "Americano", 1, 3, 1, "Curta"));
+        gatoArray.add(new Gato(12, "Bob", "Siamês", 8, 6, 1, "Longa"));
+        gatoArray.add(new Gato(13, "Selina", "Vira Lata", 7, 8, 1, "Ondulada"));
 
         // *-- Criação dos cadastros dos Pássaros dentro do ArrayList --* //
-        passaroArray.add(new Passaro("Pistola", "Pássaro", "Canário", 3, 0.5, 0.3, "Amarela", "Brancos"));
-        passaroArray.add(new Passaro("Maria", "Pássaro", "Canário", 3, 0.5, 0.3, "Amarela", "Brancos"));
-        passaroArray.add(new Passaro("Malvado", "Pássaro", "Cacatua", 5, 0.5, 0.3, "Branco", "Rosas"));
-        passaroArray.add(new Passaro("Beto", "Pássaro", "Cacatua", 5, 0.5, 0.3, "Branco", "Rosas"));
+        passaroArray.add(new Passaro(14, "Pistola", "Pássaro", "Canário", 3, 0.5, 0.3, "Amarela", "Brancos"));
+        passaroArray.add(new Passaro(15, "Maria", "Pássaro", "Canário", 3, 0.5, 0.3, "Amarela", "Brancos"));
+        passaroArray.add(new Passaro(16, "Malvado", "Pássaro", "Cacatua", 5, 0.5, 0.3, "Branco", "Rosas"));
+        passaroArray.add(new Passaro(17, "Beto", "Pássaro", "Cacatua", 5, 0.5, 0.3, "Branco", "Rosas"));
 
         // *-- Utilização da função do menu, assim sempre mantendo o looping enquanto o
         // usuário não selecionar a opção [99] --* //
         // *-- Assim que o mesmo selecionar a opção [99], o programa é finalizado e
-        // exibe
-        // uma mensagem de "Fim do Programa". --* //
+        // exibe uma mensagem de "Fim do Programa". --* //
         Menus handlerMenus = new Menus();
         int isMenu = -1;
         while (isMenu != 99) {
@@ -60,7 +58,7 @@ public class Principal {
             System.out.println();
         }
         System.out.println();
-        for (Gato gato : gatoArray){
+        for (Gato gato : gatoArray) {
             gato.exibirDados();
             System.out.println();
         }
@@ -91,8 +89,7 @@ public class Principal {
         // *-- Função para buscar um animal pelo nome nos três arraylist e devolver os
         // encontrados.--*//
         // *-- Usa a função formatador() para garantir que string inserida esterja
-        // formatada para garantir
-        // que seja encontrada. --*//
+        // formatada para garantir que seja encontrada. --*//
         // *-- Utiliza um while que impede que a String inserida seja nula, vazia e/ou
         // não tenha caracteres.--*//
         boolean isInput = true;
@@ -388,7 +385,7 @@ public class Principal {
         // *-- Tratamento de execção para evitar que o usuário insira o tipo errado de
         // dado para altura --*//
         double altura = -1;
-        while (altura<0) {
+        while (altura < 0) {
             System.out.println("Digite a altura do animal: ");
             try {
                 altura = superScanner.nextDouble();
@@ -441,7 +438,7 @@ public class Principal {
         return stringDeBuffer.toString().trim();
     }
 
-    public int getIndex(String nomeInserido, String tipoPet) {
+    public int getIndex(Integer IDprocurar, String tipoPet) {
         // *-- Função para ler o arraylist de determinado animal, procurando um elemento
         // específico
         // e retornando o index dele para o programa. Usa uma string "tipoPet" para
@@ -454,7 +451,7 @@ public class Principal {
             case "Cachorro":
                 for (int i = 0; i < Principal.cachorroArray.size(); i++) {
                     Cachorro cachorro = Principal.cachorroArray.get(i);
-                    if (nomeInserido.equals(cachorro.getNome())) {
+                    if (IDprocurar.equals(cachorro.getID())) {
                         return i;
                     }
                 }
@@ -462,14 +459,14 @@ public class Principal {
             case "Gato":
                 for (int i = 0; i < Principal.gatoArray.size(); i++) {
                     Gato gato = Principal.gatoArray.get(i);
-                    if (nomeInserido.equals(gato.getNome())) {
+                    if (IDprocurar.equals(gato.getID())) {
                         return i;
                     }
                 }
             case "Passaro":
                 for (int i = 0; i < Principal.passaroArray.size(); i++) {
                     Passaro passaro = Principal.passaroArray.get(i);
-                    if (nomeInserido.equals(passaro.getNome())) {
+                    if (IDprocurar.equals(passaro.getID())) {
                         return i;
                     }
                 }
