@@ -436,7 +436,7 @@ public class Principal {
             }
             if (altura < 0) {
                 System.out.println("Altura inválida!");
-                superScanner.next();
+                superScanner.nextLine();
                 System.out.println();
             }
             System.out.println();
